@@ -17,18 +17,5 @@ class Ball{
     pos.add(vel);
   }
   
-  void checkCollision1(){
-  if ((ball.pos.x < 0) || (ball.pos.x > width-25)){
-    ball.vel.x = -ball.vel.x;
-  }if (ball.pos.y<0){
-    ball.vel.y = -ball.vel.y;
-  }if ((ball.pos.x+25 > paddle.pos.x) && (ball.pos.x < (paddle.pos.x+100)) &&
-     ((ball.pos.y+25) > paddle.pos.y)){
-    ball.vel.y = -ball.vel.y;
-  }
   
-
-
-  
-}
 }

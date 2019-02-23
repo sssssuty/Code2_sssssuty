@@ -1,31 +1,37 @@
 class Brick{
-  PVector pos;
+  //PVector pos;
+  float x, y;
   
-  Brick(){
-    pos = new PVector(100, 100);
-  }
+  Brick(float x, float y){
+    //pos = new PVector(100, 100);
+    this.x = x;
+    this.y = y;
+}
 
   void display(){
       fill(255);
       noStroke();
-      rect(pos.x, pos.y, 100, 25);
+      rect(x, y, 100, 25);
   }
   
-  void checkCollision2(){
+  boolean checkCollision2(Ball ball){
    //bottom
-  if (((ball.pos.x+25) > brick.pos.x) && (ball.pos.x < (brick.pos.x+100)) &&
-    ball.pos.y < (brick.pos.y+25)){
+  if (((ball.pos.x+25) > x) && (ball.pos.x < (x+100)) &&
+    ball.pos.y < (y+25) && (ball.pos.y+25) > y){
     ball.vel.y = -ball.vel.y;
+    return true;
   }
-  //
-  if (((ball.pos.x+25) > brick.pos.x) && (ball.pos.x < (brick.pos.x+100)) &&
-    (ball.pos.y+25) > brick.pos.y){
-    ball.vel.y = -ball.vel.y;
-  }
+  
+  //if (((ball.pos.x+25) > x) && (ball.pos.x < (x+100)) &&
+  //  (ball.pos.y+25) > y){
+  //  ball.vel.y = -ball.vel.y;
+  //  return true;
+  //}
   
     if (ball.pos.y > 600){
-    exit(); 
-  }
+      exit(); 
+     }
+     return false;
   
   }
 }
