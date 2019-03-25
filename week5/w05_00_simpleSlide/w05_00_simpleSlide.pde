@@ -9,12 +9,16 @@ color[] slideColors = {
   color(255)
 };
 
+String[] txt = {"first","second","third","fourth"};
+
 void setup() {
   size(600, 600);
 }
 
 void draw() {
   background(slideColors[slide]);
+  text(txt[slide], 100, 100);
+  fill(0);
 }
 
 void keyPressed() {
