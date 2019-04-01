@@ -73,4 +73,17 @@ void checkBackground(){
     } else {
       state = 0;
     }
+    
+    if (dist(mouseX, mouseY, width/2, height/2) < buttonSize/4 && mousePressed) {
+      fill(0);
+      text("This button is currently offline", width/2, 100);
+      text("This button is currently offline", width/2, 150);
+      text("This button is currently offline", width/2, 200);
+      text("This button is currently offline", width/2, 250);
+      text("This button is currently offline", width/2, 300);
+      text("This button is currently offline", width/2, 350);
+      text("This button is currently offline", width/2, 400);
+      text("This button is currently offline", width/2, 450);
+      text("This button is currently offline", width/2, 500);
+    }
 }
