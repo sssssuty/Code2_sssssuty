@@ -1,0 +1,17 @@
+[{
+  "descriptions": [
+    "You are hungry but remember that you have had four meals already on that day",
+    "you can't control your hand but grabbing a piece of cake",
+    "you were distracted for the first minute, but you opened a bag of chip without even thinking about it"
+  ],
+  "options": [
+    ["try to stay away from any food", "call a friend to use your mouth in another way"],
+    ["you eat your fifth meal"],
+    ["struggle to keep your mouth close", "enjoy more foooooooood"]
+  ],
+  "optionTargets": [
+    [1, 2],
+    [0],
+    [1, 0],
+  ]
+}]

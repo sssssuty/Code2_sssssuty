@@ -43,8 +43,7 @@ void setup() {
     json.setString("optionTargets", "{1, 2},{0},{1, 0},");
   //}
   
-
-  saveJSONObject(json, "data/new.json");
+  saveJSONObject(json, "new.json");
 }
 
 void draw() {
