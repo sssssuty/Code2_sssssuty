@@ -7,7 +7,7 @@ int stage = 0;
 int sc, ac, tc, bc;
 
 void setup() {
-  size(500, 500);
+  size(500, 500,P3D);
   snake = new Snake();
   ap = new Apple();
   sc = int(random(255));

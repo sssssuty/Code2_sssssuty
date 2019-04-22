@@ -7,7 +7,12 @@ class Apple{
   }
 
   void display(){
+    stroke(255);
     fill(ac);
-    rect(posA.x, posA.y, grid, grid);
+    pushMatrix();
+    translate(posA.x, posA.y);
+    box(grid);
+    //rect(posA.x, posA.y, grid, grid);
+    popMatrix();
   }
 }  
