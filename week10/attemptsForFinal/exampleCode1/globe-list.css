@@ -1,0 +1,150 @@
+* { box-sizing : border-box; }
+
+body {
+    background: #111;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight:normal;
+    font-size: 13px;
+    min-height: 100%;
+    margin:0;
+    min-width: 100%;
+}
+h2::selection,
+h3::selection,
+p::selection,
+span::selection {
+  background: #ff619b; /* a nod to mr. irish */
+}
+
+.loading {
+  width: 7.692em;
+  height: 7.692em;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+}
+
+h2 { text-align: center; }
+
+.peeps-box, .globe-box {
+    position: absolute;
+    top: 0;
+    bottom: 0.769em;
+}
+
+.peeps-box {
+    background: #222;
+    left: 0.769em;
+    overflow: hidden;
+    padding: 0.769em;
+    width: 14.615em;
+}
+
+.select-box {
+    background: #222;
+    padding-top: 0.769em;
+}
+
+.select-box p { margin: 0.25em 0; }
+
+.select-box select {
+    background: #555;
+    border: none;
+    color: #fff;
+    font-size: 1em;
+    margin:0;
+    outline: none;
+    width: 100%;
+}
+
+.list-box {
+    position: absolute;
+    top: 5.538em;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.list-box ul, .list-box li { list-style : none; }
+
+.list-box ul {
+    margin-top: -0.95em;
+    padding: 0 3em 0 0;
+}
+
+.list-box ul li:first-of-type article {
+    margin-top: 0;
+}
+
+.peep-box {
+      background: #333;
+      margin:  0.769em 0 0 0;
+      padding: 0.769em;
+      width: 13.077em;
+}
+
+.peep-box img {
+    cursor: pointer;
+    margin: 0;
+}
+
+
+.peep-box .peep-name {
+    margin: 0 0 0.4em 0;
+}
+
+.peep-tweet {
+    margin: 0.2em 0 0 0;
+    text-align: right;
+}
+
+.twitter {
+    color: #2aa9e0;
+}
+
+.globe-box {
+    left: 15.384em;
+    right: 0; /* 0.769em; */
+}
+
+.globe-box h3 {
+    text-align: center;
+    width: 100%;
+}
+
+.three-box {
+    position: absolute;
+    top: 6.154em;
+    bottom: 0;
+    width: 100%;
+}
+
+.slug {
+    position: absolute;
+    top: 75%;
+    left: calc(50% - 11em);
+    background: #333;
+    width: 22em;
+    padding: 0.5em;
+}
+
+.slug-img {
+    background-size: 3.692em 3.692em;
+    float: left;
+    margin-right: 0.5em;
+    width: 3.692em;
+    height: 3.692em;
+}
+
+.slug p {
+    margin: 0.5em;
+    text-align: center;
+}
+.slug p:first-of-type { margin-top: 0.25em; }
+.slug p:last-of-type { margin-bottom: 0; }
