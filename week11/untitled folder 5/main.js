@@ -168,20 +168,50 @@ function fontFunction1(){
 }
 function fontFunction2(){
         background(255);
-        mabryMedium = loadFont('mabry-medium.ttf');
         fill(0);
         textSize(1360/len);
         textAlign(CENTER);
-        textFont(mabryMedium);
+        textFont("Mabry");
         text(tex, width/2, height/2+30);
 }
 
 function fontFunction3(){
         background(255);
-        ninja = loadFont('NinjaStrike.otf');
         fill(0);
         textSize(1360/len);
         textAlign(CENTER);
-        textFont(ninja);
+        textFont("NinjaStrike");
+        text(tex, width/2, height/2+30);
+}
+function fontFunction4(){
+        background(255);
+        fill(0);
+        textSize(1360/len);
+        textAlign(CENTER);
+        textFont("Orbitron");
+        text(tex, width/2, height/2+30);
+}
+function fontFunction5(){
+        background(255);
+        fill(0);
+        textSize(1360/len);
+        textAlign(CENTER);
+        textFont("MoMAGothic");
+        text(tex, width/2, height/2+30);
+}
+function fontFunction6(){
+        background(255);
+        fill(0);
+        textSize(1360/len);
+        textAlign(CENTER);
+        textFont("Liujian-Mao-Cao");
+        text(tex, width/2, height/2+30);
+}
+function fontFunction7(){
+        background(255);
+        fill(0);
+        textSize(1360/len);
+        textAlign(CENTER);
+        textFont("GT Haptik");
         text(tex, width/2, height/2+30);
 }
