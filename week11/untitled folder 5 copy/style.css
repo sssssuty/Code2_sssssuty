@@ -184,12 +184,12 @@
             position: absolute;
             top:70vw;
             left:8vw;
-            display: none;
-            animation-duration: 4s;
-            animation-fill-mode: forwards;
+/*            opacity: 0;*/
+/*            display: none;*/
+            animation-duration: 6s;
+/*            animation-fill-mode: forwards;*/
             font-family: Mabry;
             font-size: 3vw;
- /*           animation-name: example;*/
         }
         @keyframes example{
             0% {opacity: 0;}

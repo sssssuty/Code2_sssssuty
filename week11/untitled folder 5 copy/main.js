@@ -28,7 +28,9 @@ function weatherAsk(){
         document.querySelector("#welcomehead").style.display = "none";
         document.querySelector("#next").style.display = "none";
     if (input.value() === ""){
-        console.log("hhh");
+        background(255);
+        document.getElementById("error").innerHTML = "Ooops. You have entered an no name city."
+        document.getElementById("error").style.display = "inline";
     }
     else{
         counter = counter + 1;
@@ -61,6 +63,7 @@ function weatherAsk(){
             appendStroke.setAttribute("onclick", "strokeFunction()");
             appendStroke.setAttribute("id","strokeOption" + counter);
             document.getElementById('strokeOptions').appendChild(appendStroke);
+            document.getElementById("error").style.display = "none";
         }
         else{
             background(255);
@@ -68,7 +71,6 @@ function weatherAsk(){
             text(tex, width/2, height/2+80);
             document.getElementById("error").innerHTML = "Ooops. The city you typed is not on Earth."
             document.getElementById("error").style.display = "inline";
-            document.getElementById("error").style.animationName = "example";
         }
         input.value("");
     }
@@ -112,7 +114,6 @@ function draw(){
         selectColor.style("background-color", "rgb" + rgba);
         document.getElementById("strokeOption" + counter).style.width = "3vw";
         document.getElementById("strokeOption" + counter).style.height = len/3 + "vw";
-        // document.getElementById("strokeOption" + counter).style.color = "red";
         weather = false;
     }
     if (mouseIsPressed){
