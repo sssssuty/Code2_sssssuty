@@ -3,57 +3,79 @@ var api = "http://api.openweathermap.org/data/2.5/weather?q=";
 var apiKey = "&APPID=d9e40004dfa7e1f572ca81f1d08a5109";
 var units = "&unit=metric";
 var counter = -1;
+var counter2 = -1;
+var save = [];
+var counter3 = -1;
 
 function setup(){
-    createCanvas(1200,580);
+
+    createCanvas(windowWidth,580);
 
     var button = select("#submit");
     button.mousePressed(weatherAsk);
 
     input = select("#city");
     fill(0);
-
     siz = 10;
-
-    
 }
 
 function weatherAsk(){
+        document.querySelector("#welcomeline0").style.display = "none";
+        document.querySelector("#welcomeline1").style.display = "none";
+        document.querySelector("#welcomeline2").style.display = "none";
+        document.querySelector("#welcomeline3").style.display = "none";
+        document.querySelector("#welcomeline4").style.display = "none";
+        document.querySelector("#welcomehead").style.display = "none";
+        document.querySelector("#next").style.display = "none";
     if (input.value() === ""){
         console.log("hhh");
-    }else{
+    }
+    else{
         counter = counter + 1;
         len = input.value().length;
 
         background(255);
         fill(0);
+        noStroke();
         textSize(1360/len);
         textAlign(CENTER);
+        textFont("Mabry");
         tex = input.value();
-        text(tex, width/2, height/2+30);
+        text(tex, width/2, height/2+80);
 
         var url = api + input.value() + apiKey + units;
-        loadJSON(url, gotData);
+
+        var http = new XMLHttpRequest();
+        http.open("GET",url,false);
+        http.send();
+        if(http.status != 404){
+            loadJSON(url, gotData);
+            var appendColor = document.createElement("div");
+            appendColor.setAttribute("class", "option");
+            appendColor.setAttribute("onclick", "colorFunction()");
+            appendColor.setAttribute("id","colorOption" + counter);
+            document.getElementById('colorOptions').appendChild(appendColor);
+            
+            var appendStroke = document.createElement("div");
+            appendStroke.setAttribute("class", "option1");
+            appendStroke.setAttribute("onclick", "strokeFunction()");
+            appendStroke.setAttribute("id","strokeOption" + counter);
+            document.getElementById('strokeOptions').appendChild(appendStroke);
+        }
+        else{
+            background(255);
+            tex = "";
+            text(tex, width/2, height/2+80);
+            document.getElementById("error").innerHTML = "Ooops. The city you typed is not on Earth."
+            document.getElementById("error").style.display = "inline";
+            document.getElementById("error").style.animationName = "example";
+        }
         input.value("");
     }
-
-    var appendColor = document.createElement("div");
-    appendColor.setAttribute("class", "option");
-    appendColor.setAttribute("onclick", "colorFunction()");
-    appendColor.setAttribute("id","colorOption" + counter);
-    document.getElementById('colorOptions').appendChild(appendColor);
-
-    var appendStroke = document.createElement("div");
-    appendStroke.setAttribute("class", "option1");
-    appendStroke.setAttribute("onclick", "strokeFunction()");
-    appendStroke.setAttribute("id","strokeOption" + counter);
-    document.getElementById('strokeOptions').appendChild(appendStroke);
-
 }
 
 function gotData(data){
     weather = data;
-    // console.log(weather);
 }
 
 function draw(){
@@ -80,7 +102,6 @@ function draw(){
         if(winD < 1){
             winD = 1;
         }
-        // print(temP);
         r = map(temP, 284, 300, 0, 255);
         g = map(humiditY, 20,90,0,255);
         b = map(winD, 1,3.5,0,255);
@@ -91,16 +112,15 @@ function draw(){
         selectColor.style("background-color", "rgb" + rgba);
         document.getElementById("strokeOption" + counter).style.width = "3vw";
         document.getElementById("strokeOption" + counter).style.height = len/3 + "vw";
-        document.getElementById("strokeOption" + counter).style.color = "red";
+        // document.getElementById("strokeOption" + counter).style.color = "red";
         weather = false;
     }
     if (mouseIsPressed){
-            fill(r,g,b);
-            noStroke();
-            ellipse(mouseX, mouseY, siz, siz);
-    }
-    if (frameCount % 200 === 0){
-        checkPixel();
+            stroke(r,g,b);
+            // noStroke();
+            strokeWeight(siz);
+            line(mouseX, mouseY, pmouseX, pmouseY);;
+            // ellipse(mouseX, mouseY, siz, siz);
     }
 }
 
@@ -115,13 +135,12 @@ function colorFunction(){
 }
 
 function strokeFunction(){
-    // console.log(event.target.style.height);
     var height = event.target.style.height;
     siz = height.replace("vw","")*8;
 }
 
 function saveFunction(){
-    save('myCanvas.jpg');
+    save('myMasterPiece.jpg');
 }
 
 function eraseFunction(){
@@ -130,88 +149,194 @@ function eraseFunction(){
     g = 255;
 }
 
-function checkPixel(){
-    // noLoop();
-    loadPixels();
-    // print(pixels);
-    for (var i =0; i < pixels.length; i ++){
-        if (pixels[i] === 0){
-            // print(num);
-        }else{
-            var num = pixels.length;
-            num --;
-            // print(num);
-        }
-    }
-
-    if (num < 10){
-        print(num);
-    }          
-}
-
 function fontFunction(){
         background(255);
         fill(0);
+        noStroke();
         textSize(1360/len);
         textAlign(CENTER);
-        textFont('Helvetica');
-        text(tex, width/2, height/2+30);
+        textFont('Mabry');
+        text(tex, width/2, height/2+80);
 }
 
 function fontFunction1(){
         background(255);
         fill(0);
+        noStroke();
         textSize(1360/len);
         textAlign(CENTER);
         textFont('Times');
-        text(tex, width/2, height/2+30);
+        text(tex, width/2, height/2+80);
 }
 function fontFunction2(){
         background(255);
         fill(0);
+        noStroke();
         textSize(1360/len);
         textAlign(CENTER);
-        textFont("Mabry");
-        text(tex, width/2, height/2+30);
+        textFont("Janitor");
+        text(tex, width/2, height/2+80);
 }
 
 function fontFunction3(){
         background(255);
         fill(0);
+        noStroke();
         textSize(1360/len);
         textAlign(CENTER);
         textFont("NinjaStrike");
-        text(tex, width/2, height/2+30);
+        text(tex, width/2, height/2+80);
 }
 function fontFunction4(){
         background(255);
         fill(0);
+        noStroke();
         textSize(1360/len);
         textAlign(CENTER);
         textFont("Orbitron");
-        text(tex, width/2, height/2+30);
+        text(tex, width/2, height/2+80);
 }
 function fontFunction5(){
         background(255);
         fill(0);
+        noStroke();
         textSize(1360/len);
         textAlign(CENTER);
-        textFont("MoMAGothic");
-        text(tex, width/2, height/2+30);
+        textFont("Italianno");
+        text(tex, width/2, height/2+80);
 }
 function fontFunction6(){
         background(255);
         fill(0);
+        noStroke();
         textSize(1360/len);
         textAlign(CENTER);
         textFont("Liujian-Mao-Cao");
-        text(tex, width/2, height/2+30);
+        text(tex, width/2, height/2+80);
 }
 function fontFunction7(){
         background(255);
         fill(0);
+        noStroke();
         textSize(1360/len);
         textAlign(CENTER);
-        textFont("GT Haptik");
-        text(tex, width/2, height/2+30);
+        textFont("Grand Hotel");
+        text(tex, width/2, height/2+80);
+}
+
+var i;
+var txt;
+var speed = 80;
+
+function nextFunction(){
+    i = 0;
+    counter2 ++;
+    if (counter2 == 0){
+        txt = "Here are some tips before you start your masterpiece ----";
+        typeWriter0();
+        document.getElementById("arrow0").style.display = "none";
+        document.getElementById("arrow1").style.display = "none";
+        document.getElementById("arrow2").style.display = "none";
+        document.getElementById("arrow3").style.display = "none";
+        document.getElementById("arrow4").style.display = "none";
+        document.getElementById("arrow5").style.display = "none";
+    }
+    if(counter2 == 1){
+        txt = "A COLOR option and a pen tool WEIGHT option will be generated, once a correct CITY NAME is entered.";
+        typeWriter1();
+        document.getElementById("arrow0").style.display = "inline";
+        document.getElementById("arrow1").style.display = "inline";
+        document.getElementById("arrow2").style.display = "none";
+        document.getElementById("arrow3").style.display = "none";
+        document.getElementById("arrow4").style.display = "none";
+        document.getElementById("arrow5").style.display = "inline";
+    }
+    if (counter2 == 2){
+        txt = "Eight selected FONT styles are loaded here.";
+        typeWriter2();
+        document.getElementById("arrow0").style.display = "none";
+        document.getElementById("arrow1").style.display = "none";
+        document.getElementById("arrow2").style.display = "inline";
+        document.getElementById("arrow3").style.display = "none";
+        document.getElementById("arrow4").style.display = "none";
+        document.getElementById("arrow5").style.display = "none";
+    }
+    if(counter2 == 3){
+        txt = "You can use the ERASER tool to clean up, and a SAVE tool is provided to save your masterpiece as a JPG.";
+        typeWriter3();
+        document.getElementById("arrow0").style.display = "none";
+        document.getElementById("arrow1").style.display = "none";
+        document.getElementById("arrow2").style.display = "none";
+        document.getElementById("arrow3").style.display = "inline";
+        document.getElementById("arrow4").style.display = "inline";
+        document.getElementById("arrow5").style.display = "none";
+    }
+    if(counter2 == 4){
+        txt = "Great, you are now ready to have some fun! Try type in your favorite city to start!";
+        typeWriter4();
+        document.getElementById("arrow0").style.display = "none";
+        document.getElementById("arrow1").style.display = "none";
+        document.getElementById("arrow2").style.display = "none";
+        document.getElementById("arrow3").style.display = "none";
+        document.getElementById("arrow4").style.display = "none";
+        document.getElementById("arrow5").style.display = "inline";
+    }
+    if (counter2 > 4){
+        document.getElementById("arrow0").style.display = "none";
+        document.getElementById("arrow1").style.display = "none";
+        document.getElementById("arrow2").style.display = "none";
+        document.getElementById("arrow3").style.display = "none";
+        document.getElementById("arrow4").style.display = "none";
+        document.getElementById("arrow5").style.display = "none";
+        document.querySelector("#welcomeline0").style.display = "none";
+        document.querySelector("#welcomeline1").style.display = "none";
+        document.querySelector("#welcomeline2").style.display = "none";
+        document.querySelector("#welcomeline3").style.display = "none";
+        document.querySelector("#welcomeline4").style.display = "none";
+        document.querySelector("#welcomehead").style.display = "none";
+        document.querySelector("#next").style.display = "none";
+    }
+    document.getElementById("welcomeline0").style.display = "none";
+    document.getElementById("welcomeline1").style.display = "none";
+    document.getElementById("welcomeline2").style.display = "none";
+    document.getElementById("welcomeline3").style.display = "none";
+    document.getElementById("welcomeline4").style.display = "none";
+    document.getElementById("welcomeline" + counter2).style.display = "inline";
+}
+
+function typeWriter0() {
+  if (i < txt.length) {
+    document.getElementById("welcomeline" + counter2).innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter0, speed);
+  }
+}
+
+function typeWriter1() {
+  if (i < txt.length) {
+    document.getElementById("welcomeline" + counter2).innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter1, speed);
+  }
+}
+function typeWriter2() {
+  if (i < txt.length) {
+    document.getElementById("welcomeline" + counter2).innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter2, speed);
+  }
+}
+function typeWriter3() {
+  if (i < txt.length) {
+    document.getElementById("welcomeline" + counter2).innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter3, speed);
+  }
+}
+function typeWriter4() {
+  if (i < txt.length) {
+    document.getElementById("welcomeline" + counter2).innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter4, speed);
+  }
 }
