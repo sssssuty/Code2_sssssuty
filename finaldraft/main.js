@@ -1,5 +1,5 @@
 var weather, temP, humiditY, winD, viS, r, g, b, a, rgba, siz, len, tex;
-var api = " https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=";
+var api = " https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=";
 var apiKey = "&APPID=d9e40004dfa7e1f572ca81f1d08a5109";
 var units = "&unit=metric";
 var counter = -1;
