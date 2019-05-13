@@ -198,7 +198,7 @@ function fontFunction2(){
         noStroke();
         textSize(1360/len);
         textAlign(CENTER);
-        textFont(myFont2);
+        textFont(myFont3);
         text(tex, width/2, height/2+80);
 }
 
@@ -208,7 +208,7 @@ function fontFunction3(){
         noStroke();
         textSize(1360/len);
         textAlign(CENTER);
-        textFont(myFont3);
+        textFont(myFont2);
         text(tex, width/2, height/2+80);
 }
 function fontFunction4(){
